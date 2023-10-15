@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.1/css/bootstrap-grid.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+ 
+</head>
+<body>
+   <div class="container">
+    <h2 >註冊</h2>
+    <input placeholder="Email" value="" id="inputEmail"/>
+    <input 
+    placeholder="Password"
+    type="password"
+    value=""
+    id="inputPassword"
+    />
+    <input 
+    placeholder="Nickname"
+    type="nickname"
+    value=""
+    id="inputNickname"
+    />
+    <button id="btnSignUp">註冊</button>
+    <button id="btnLogin">登入</button>
+
+    
+    <h2 >驗證</h2>
+    <input placeholder="Token" value="" id="inputToken"/>
+    <input 
+    placeholder="Token"
+    type="Token"
+    value=""
+    id="inputToken"
+    />
+    <button id="btnAuth">驗證</button>
+    <h2 >ToDo List</h2>
+    <input placeholder="New ToDo" value="" id="inputToDo"/>
+    
+    <button id="btnAddToDo">Add ToDo</button>
+    <button id="btnGetToDo">Get ToDo</button>
+    <ul></ul>
+    </div>
+    
+  
+   <script>
+    // axios.get( 'https://randomuser.me/api/')
+    // .then((res)=>{
+    //     console.log(res);
+    //     const {seed}=res.data.info;
+    //     console.log(seed);
+    // })
+    const inputEmail=document.querySelector("#inputEmail");
+    const inputPassword=document.querySelector("#inputPassword");
+    const inputNickname=document.querySelector("#inputNickname");
+    const btnSignUp=document.querySelector("#btnSignUp");
+    const btnLogin=document.querySelector("#btnLogin");
+    const inputToken=document.querySelector("#inputToken");
+    const btnToken=document.querySelector("#btnToken");
+    const inputToDo=document.querySelector("#inputToDo");
+    const btnAddToDo=document.querySelector("#btnAddToDo");
+    const btnGetToDo=document.querySelector("#btnGetToDo");
+    const list=document.querySelector("#btnGetToDo");
+    
+    btnSignUp.addEventListener("click",()=>{
+        const email=inputEmail.value;
+        const password=inputPassword.value;
+        const nickname=inputNickname.value;
+        console.log(email,password,nickname);
+        axios.post("http:localhost:8088/auth1/login",{
+            email,
+            password,
+            nickname
+        })
+            .then((回應)=>{
+                console.log(回應)
+            })
+
+    })
+    btnLogin.addEventListener("click",()=>{
+        const email=inputEmail.value;
+        const password=inputPassword.value;
+       
+        console.log(email,password);
+        axios.post("https://todolist-api.hexschool.io/doc/users/sign_in",{
+            email,
+            password,
+          
+        })
+            .then((回應)=>{
+                console.log(回應)
+            })
+
+    })
+
+    </script>
+</body>
+
+
+</html>
