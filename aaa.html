@@ -70,7 +70,7 @@
         const password=inputPassword.value;
         const nickname=inputNickname.value;
         console.log(email,password,nickname);
-        axios.post("http:localhost:8088/auth1/signup",{
+        axios.post("http:localhost:8088/auth1/signup", "json",{
             email,
             password,
             nickname
